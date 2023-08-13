@@ -1,0 +1,69 @@
+$base-background : #1F2029;
+$base-control-color: #8167A9;
+$neon-pink: #b042f9;
+
+.home-container {
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    background: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #1F2029;
+    overflow: hidden;
+
+
+    .left-container {
+        width: 40%;
+        height: 70%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-size: 6vw;
+            color: $neon-pink;
+        }
+
+        p {
+            margin-top: 5%;
+            margin-left: 1%;
+            font-size: larger;
+            font-weight: 500;
+
+        }
+    }
+
+    .right-container {
+        width: 30%;
+        height: 80%;
+    }
+
+    .arrow {
+        position: absolute;
+        z-index: -1;
+        transform: r;
+
+
+        svg {
+            path {
+                stroke-dasharray: 2624;
+            }
+        }
+
+    }
+    .arrow-second {
+        position: absolute;
+        z-index: -1;
+        transform: translateY(20px);
+
+        svg {
+            path {
+                stroke-dasharray: 2850;
+            }
+        }
+
+    }
+}
