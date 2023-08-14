@@ -22,7 +22,6 @@ export default function Home() {
 
     useEffect(() => {
         const arrow = document.querySelector('.arrow-two');
-
         anime({
             targets: arrow,
             strokeDashoffset: [anime.setDashoffset, 0],
