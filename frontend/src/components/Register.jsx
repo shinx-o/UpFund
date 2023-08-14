@@ -2,6 +2,7 @@ import React from 'react'
 import "./Register.scss"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { BsEyeFill } from "react-icons/bs";
 
 export default function Register() {
     return (
@@ -22,6 +23,7 @@ export default function Register() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Control type="password" id="inputPassword5" placeholder='Enter Password' required />
+                        <BsEyeFill className='eye'/>
                     </Form.Group>
                 </Form>
             </div>

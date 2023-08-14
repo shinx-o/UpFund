@@ -45,7 +45,7 @@ export default function Home() {
                 <Register />
                 {/* <Login /> */}
             </div>
-            <div className="arrow">
+            {/* <div className="arrow">
                 <svg
                     id="wave"
                     width="100vw"
@@ -84,7 +84,7 @@ export default function Home() {
                         strokeWidth="3"
                     ></path>
                 </svg>
-            </div>
+            </div> */}
         </div>
     )
 }

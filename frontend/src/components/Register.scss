@@ -48,3 +48,10 @@ $neon-pink: #b042f9;
     }
 
 }
+
+.eye {
+    float: right;
+    color: white;
+    transform: translate(-15px,-25px);
+    cursor: pointer;
+}
