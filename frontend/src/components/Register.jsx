@@ -1,29 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Register.scss"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { BsEyeFill } from "react-icons/bs";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
+
 
 export default function Register() {
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(prevVisible => !prevVisible);
+    };
+
+
     return (
         <div className="login-container">
             <div className="fields">
                 <Form data-bs-theme="dark">
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3" >
                         <Form.Control type="text" placeholder="Enter Full Name" required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3" >
                         <Form.Control type="text" placeholder="Enter Phone Number" required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Control type="text" placeholder="Enter Your Username" required />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3" >
                         <Form.Control type="email" placeholder="Enter Email" required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Control type="password" id="inputPassword5" placeholder='Enter Password' required />
-                        <BsEyeFill className='eye'/>
+                    <Form.Group className="mb-3" >
+                        <Form.Control type={passwordVisible ? 'text' : 'password'} id="inputPassword5" placeholder='Enter Password' required />
+                        <BsEyeFill
+                            className={`eye ${passwordVisible ? 'visible' : ''}`}
+                            onClick={togglePasswordVisibility}
+                        />
+                        <BsEyeSlashFill
+                            className={`eye ${!passwordVisible ? 'visible' : ''}`}
+                            onClick={togglePasswordVisibility}
+                        />
                     </Form.Group>
                 </Form>
             </div>
@@ -32,7 +45,7 @@ export default function Register() {
             </div>
             <div className="link-container">
                 <span>Already Registered?</span>
-                <a href="/login" className="login-link">Login</a>
+                <Link to="/login" className="login-link">Login</Link>
             </div>
         </div>
     )

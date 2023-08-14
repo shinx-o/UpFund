@@ -32,6 +32,7 @@ $neon-pink: #b042f9;
             margin-left: 1%;
             font-size: larger;
             font-weight: 500;
+            
 
         }
     }
@@ -39,6 +40,8 @@ $neon-pink: #b042f9;
     .right-container {
         width: 30%;
         height: 80%;
+
+
     }
 
     .arrow {
@@ -54,6 +57,7 @@ $neon-pink: #b042f9;
         }
 
     }
+
     .arrow-second {
         position: absolute;
         z-index: -1;
@@ -66,5 +70,5 @@ $neon-pink: #b042f9;
         }
 
     }
-    
+
 }

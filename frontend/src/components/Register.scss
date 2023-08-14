@@ -44,7 +44,10 @@ $neon-pink: #b042f9;
     margin-left: 1%;
     .login-link {
         text-decoration: none;
+        font-weight: 500;
+        font-size: large;
         margin-left: 3%;
+        color: #8167A9;
     }
 
 }
@@ -54,4 +57,8 @@ $neon-pink: #b042f9;
     color: white;
     transform: translate(-15px,-25px);
     cursor: pointer;
+}
+
+.visible {
+    display: none;
 }
