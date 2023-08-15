@@ -19,16 +19,16 @@ export default function Register() {
             <div className="fields">
                 <Form data-bs-theme="dark">
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" placeholder="Enter Full Name" required />
+                        <Form.Control type="text" placeholder="Full Name" required />
                     </Form.Group>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" placeholder="Enter Phone Number" required />
+                        <Form.Control type="text" placeholder="Phone Number" required />
                     </Form.Group>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="email" placeholder="Enter Email" required />
+                        <Form.Control type="email" placeholder="Email" required />
                     </Form.Group>
                     <Form.Group className="mb-3" >
-                        <Form.Control type={passwordVisible ? 'text' : 'password'} id="inputPassword5" placeholder='Enter Password' required />
+                        <Form.Control type={passwordVisible ? 'text' : 'password'} id="inputPassword5" placeholder='Password' required />
                         <BsEyeFill
                             className={`eye ${passwordVisible ? 'visible' : ''}`}
                             onClick={togglePasswordVisibility}
@@ -45,7 +45,7 @@ export default function Register() {
             </div>
             <div className="link-container">
                 <span>Already Registered?</span>
-                <Link to="/login" className="login-link">Login</Link>
+                <Link to="/managerDashboard" className="login-link">Login</Link>
             </div>
         </div>
     )

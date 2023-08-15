@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import "./Home.scss"
-import Register from './Register'
+import Register from '../Register/Register'
 import anime from 'animejs';
-import Login from './Login'
+import Login from '../Login/Login'
 import { Route, Routes } from 'react-router-dom'; // Correct import
 
 
@@ -52,7 +52,7 @@ export default function Home() {
                 <svg
                     id="wave"
                     width="100vw"
-                    height="100vh"
+                    height="calc(100vh - 50px)"
                     style={{ transform: 'rotate(0deg)', transition: '0.3s' }}
                     viewBox="0 0 1440 330"
                     version="1.1"
@@ -72,7 +72,7 @@ export default function Home() {
                 <svg
                     id="wave"
                     width="100vw"
-                    height="100vh"
+                    height="calc(100vh - 50px)"
                     style={{ transform: 'rotate(0deg)', transition: '0.3s' }}
                     viewBox="0 0 1440 330"
                     version="1.1"

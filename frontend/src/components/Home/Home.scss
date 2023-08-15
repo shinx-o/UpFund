@@ -12,7 +12,7 @@ $neon-pink: #b042f9;
     justify-content: space-evenly;
     align-items: center;
     background-color: #1F2029;
-    overflow: hidden;
+    overflow-x: hidden;
 
 
     .left-container {
@@ -39,7 +39,7 @@ $neon-pink: #b042f9;
 
     .right-container {
         width: 30%;
-        height: 80%;
+        height: calc(80% - 60px);
 
 
     }
