@@ -8,8 +8,8 @@ export default function NavBar() {
     return (
         <div className='navbar-container'>
             <div className="left-part">
-                <Link to="/register" className='navlink logo-upfunds'>UpFunds</Link>
-                <Link to="/register" className='navlink'>Home</Link>
+                <Link to="/" className='navlink logo-upfunds'>UpFunds</Link>
+                <Link to="/" className='navlink'>Home</Link>
                 <Link to="/aboutus" className='navlink'>About Us</Link>
                 <Link to="/contact" className='navlink'>Contact</Link>
             </div>

@@ -43,8 +43,8 @@ export default function Home() {
             </div>
             <div className="right-container">
                 {<Routes>
+                    <Route path="*" element={<Register />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/" element={<Register />} />
                     <Route path="/register" element={<Register />} />
                 </Routes>}
             </div>

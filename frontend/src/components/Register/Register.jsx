@@ -45,7 +45,7 @@ export default function Register() {
             </div>
             <div className="link-container">
                 <span>Already Registered?</span>
-                <Link to="/managerDashboard" className="login-link">Login</Link>
+                <Link to="/login" className="login-link">Login</Link>
             </div>
         </div>
     )

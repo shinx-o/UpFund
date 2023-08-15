@@ -33,7 +33,7 @@ export default function Login() {
                 </Form>
             </div>
             <div className="btn-container">
-                <Button variant="primary" className="login-btn">Login</Button>
+                <Link to='/managerDashboard'><Button variant="primary" className="login-btn">Login</Button></Link>
             </div>
             <div className="link-container">
                 <span>Not Registered?</span>
