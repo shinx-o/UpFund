@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import "./Home.scss"
-import Register from './Register'
+import Register from '../Register/Register'
 import anime from 'animejs';
-// import Login from './Login'
+import Login from '../Login/Login'
+import { Route, Routes } from 'react-router-dom'; // Correct import
+
 
 
 export default function Home() {
-
     useEffect(() => {
         const arrow = document.querySelector('.arrow-move');
 
@@ -14,7 +15,7 @@ export default function Home() {
             targets: arrow,
             strokeDashoffset: [anime.setDashoffset, 0],
             easing: 'linear',
-            duration: 60000,
+            duration: 10000,
             delay: function (el, i) { return i * 250 },
             loop: true
         });
@@ -26,14 +27,14 @@ export default function Home() {
             targets: arrow,
             strokeDashoffset: [anime.setDashoffset, 0],
             easing: 'linear',
-            duration: 100000,
+            duration: 10000,
             delay: function (el, i) { return i * 250 },
             loop: true
         });
     }, []);
 
     return (
-        <div class="home-container">
+        <div className="home-container">
             <div className="left-container">
                 <h1>UpFunds</h1>
                 <p>Discover financial growth with UpFunds. Our personalized mutual funds and expert guidance
@@ -41,14 +42,17 @@ export default function Home() {
                 </p>
             </div>
             <div className="right-container">
-                <Register />
-                {/* <Login /> */}
+                {<Routes>
+                    <Route path="*" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Routes>}
             </div>
-            {/* <div className="arrow">
+            <div className="arrow">
                 <svg
                     id="wave"
                     width="100vw"
-                    height="100vh"
+                    height="calc(100vh - 50px)"
                     style={{ transform: 'rotate(0deg)', transition: '0.3s' }}
                     viewBox="0 0 1440 330"
                     version="1.1"
@@ -68,7 +72,7 @@ export default function Home() {
                 <svg
                     id="wave"
                     width="100vw"
-                    height="100vh"
+                    height="calc(100vh - 50px)"
                     style={{ transform: 'rotate(0deg)', transition: '0.3s' }}
                     viewBox="0 0 1440 330"
                     version="1.1"
@@ -83,7 +87,7 @@ export default function Home() {
                         strokeWidth="3"
                     ></path>
                 </svg>
-            </div> */}
+            </div>
         </div>
     )
 }

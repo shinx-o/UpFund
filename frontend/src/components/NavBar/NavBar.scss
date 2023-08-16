@@ -1,26 +1,39 @@
+$base-background : #1F2029;
+$base-fade-background : #292b35;
+$base-control-color: #8167A9;
+$neon-pink: #b042f9;
+$input-background: #212529;
+$input-text-color: #AEB2B6;
+
 .navbar-container {
     width: 100vw;
-    height: 50px;
+    height: 60px;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 10;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     font-weight: 500;
+    background-color: #292b35;
+    border-radius: 0 0 20px 20px;
+    border-bottom: 2px solid $base-control-color;
+
 
     .left-part {
         display: flex;
         flex-direction: row;
-        
+
         .logo-upfunds {
             margin-right: 3vw;
         }
 
-        a {
+        .navlink {
+            text-decoration: none;
+            color: white;
             margin-right: 2vw;
         }
     }

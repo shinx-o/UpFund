@@ -7,9 +7,10 @@ $neon-pink: #b042f9;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 15% 20%;
     background-color: #292b35;
     border-radius: 15px;
+    min-height: 400px;
 
     .fields {
         display: flex;
@@ -44,7 +45,10 @@ $neon-pink: #b042f9;
     margin-left: 1%;
     .login-link {
         text-decoration: none;
+        font-weight: 500;
+        font-size: large;
         margin-left: 3%;
+        color: #8167A9;
     }
 
 }
@@ -54,4 +58,13 @@ $neon-pink: #b042f9;
     color: white;
     transform: translate(-15px,-25px);
     cursor: pointer;
+
+    &:hover {
+        color: $neon-pink;
+    }
+
+}
+
+.visible {
+    display: none;
 }

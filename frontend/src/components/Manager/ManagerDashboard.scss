@@ -1,0 +1,69 @@
+$base-background : #1F2029;
+$base-control-color: #8167A9;
+$neon-pink: #b042f9;
+
+.dashboard-container {
+    background-color: $base-background;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 10% 10% 10%;
+
+    .mutual-fund-container {
+        padding: 2% 4%;
+        width: 100%;
+        height: 100%;
+
+
+        .mutual-fund-btns {
+            width: 100%;
+            height: 50px;
+            padding: 1% 0%;
+        }
+    }
+
+
+
+
+
+}
+
+.MuiDataGrid-columnHeaders {
+    background-color: #292b35;
+    // background-color: #8167A9;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.MuiSvgIcon-root,
+.MuiToolbar-root {
+    color: #B8B9BA;
+
+    path {
+        color: #B8B9BA;
+
+    }
+}
+
+.MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows {
+    margin-bottom: 1%;
+}
+
+.MuiDataGrid-columnHeader {
+    float: left;
+}
+
+.mutual-fund-charts-container {
+    width: 40%;
+    padding: 2% 4%;
+}
