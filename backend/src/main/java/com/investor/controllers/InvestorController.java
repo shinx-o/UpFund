@@ -27,6 +27,7 @@ public class InvestorController {
 		System.out.println(res);
 		return res;
 	}
+	
 	@RequestMapping(value="/investor/id/{id}",method=RequestMethod.GET)
 	public String getInvestorById(@PathVariable("id") int investorId)
 	{

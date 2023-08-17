@@ -20,14 +20,14 @@ public class TransactionController {
 	@Autowired
 	TransactionService ts;
 	@RequestMapping(value="/transactions",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public String getAllTransactions()
+	public String getAllTransactions()//Arrsy;list
 	{
 	
 		return ts.getAllTransactions();
 		
 	}
 	@RequestMapping(value="/tranasctions/investor",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public String getInvestorTransactions()
+	public String getInvestorTransactions()//
 	{
 	
 		return ts.getInvestorTransactions(0);
