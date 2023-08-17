@@ -26,7 +26,7 @@ public class TransactionController {
 		return ts.getAllTransactions();
 		
 	}
-	@RequestMapping(value="/tranasctions/investor",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@RequestMapping(value="/tranasctions/investor/{id}",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public String getInvestorTransactions()//
 	{
 	
