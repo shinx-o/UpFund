@@ -1,8 +1,11 @@
 package com.manager.services;
 
 
+import org.springframework.stereotype.Service;
+
 import com.manager.models.MutualFund;
 
+@Service
 public class MutualFundService {
 
 

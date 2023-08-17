@@ -22,7 +22,10 @@ public class InvestorController {
 	@RequestMapping(value="/investor/create",method=RequestMethod.POST)
 	public String createInvestor(@RequestBody Investor i)
 	{
-		return is.createInvestor(i);
+		System.out.println("Calling Controller");
+		String res = is.createInvestor(i);
+		System.out.println(res);
+		return res;
 	}
 	@RequestMapping(value="/investor/id/{id}",method=RequestMethod.GET)
 	public String getInvestorById(@PathVariable("id") int investorId)

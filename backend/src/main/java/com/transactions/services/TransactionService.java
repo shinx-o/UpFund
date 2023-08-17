@@ -1,7 +1,10 @@
 package com.transactions.services;
 
+import org.springframework.stereotype.Service;
+
 import com.transaction.models.InvestorTransaction;
 
+@Service
 public class TransactionService {
 	
     public String getAllTransactions() {

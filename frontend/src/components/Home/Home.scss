@@ -32,7 +32,7 @@ $neon-pink: #b042f9;
             margin-left: 1%;
             font-size: larger;
             font-weight: 500;
-            
+
 
         }
     }
@@ -47,22 +47,21 @@ $neon-pink: #b042f9;
     .arrow {
         position: absolute;
         z-index: -1;
-        transform: r;
-
-
+        
+        
         svg {
             path {
                 stroke-dasharray: 2624;
             }
         }
-
+        
     }
-
+    
     .arrow-second {
         position: absolute;
         z-index: -1;
-        transform: translateY(20px);
-
+        bottom: 0;
+        
         svg {
             path {
                 stroke-dasharray: 2850;

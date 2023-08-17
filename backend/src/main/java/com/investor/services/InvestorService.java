@@ -1,11 +1,25 @@
 package com.investor.services;
 
-import com.investor.models.Investor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.investor.models.Investor;
+import com.repository.InvestorRepository;
+
+@Service
 public class InvestorService {
+	
+	@Autowired
+	InvestorRepository ir;
+	
 	public String createInvestor(Investor investor) {
-  
-        return "Investor created successfully!";
+		System.out.println("Calling Service");
+		try {
+			ir.save(investor);
+			return "User created successfully";
+		}catch (Exception e) {
+			return e.getMessage();
+		}
     }
 
     public String getInvestorById(int investorId) {

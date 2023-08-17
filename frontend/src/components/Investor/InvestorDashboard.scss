@@ -1,69 +1,123 @@
 $base-background : #1F2029;
 $base-control-color: #8167A9;
 $neon-pink: #b042f9;
+$input-text-color: #AEB2B6;
 
-.dashboard-container {
+
+.investor-dashboard-container {
     background-color: $base-background;
     width: 100vw;
-    height: 100vh;
-    padding: 60px 10% 10% 10%;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
 
-    .mutual-fund-container {
-        padding: 2% 4%;
-        width: 100%;
+    .left {
+        width: 40%;
         height: 100%;
+        padding: 10px;
+
+        .investment-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            border: 2px solid $base-control-color;
+            background-color: #212529;
 
 
-        .mutual-fund-btns {
-            width: 60%;
-            height: 50px;
-            padding: 1% 0%;
+            .theader {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                color: white;
+                border: 1px solid $base-control-color;
+
+                .header {
+                    text-align: center;
+                    width: 100px;
+                    font-weight: 500;
+                }
+            }
+
+            .tbody-container {
+                width: 100%;
+                height: 380px;
+                overflow-y: scroll;
+
+                & {
+                    scrollbar-width: auto;
+                    scrollbar-color: #8167a9 #ffffff00;
+                }
+
+                /* Chrome, Edge, and Safari */
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                &::-webkit-scrollbar-track {
+                    display: none;
+                    background: none;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: #8167a9;
+                    border-radius: 16px;
+                    border: 0px solid #ffffff;
+                }
+
+            }
+
+            .tr {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                color: white;
+                border: 1px solid $base-control-color;
+
+                button {
+                    cursor: pointer;
+                    background-color: $base-control-color;
+                    padding: 4px;
+                    border: none;
+                    color: white;
+                    border-radius: 20px;
+                }
+
+                .td {
+                    text-align: center;
+                    width: 130px;
+                }
+            }
+
+
+
+
         }
     }
 
+    .right {
+        width: 60%;
+        height: 100%;
+        padding: 10px;
 
+        .investment-chart {
+            width: 100%;
+            height: 300px;
+            padding: 5px;
+        }
 
-
-
-}
-
-.MuiDataGrid-columnHeaders {
-    background-color: #292b35;
-    // background-color: #8167A9;
-}
-
-.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
-    font-weight: 600;
-    color: white;
-    text-align: center;
-}
-
-.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
-    font-weight: 600;
-    color: white;
-    text-align: center;
-}
-
-.MuiSvgIcon-root,
-.MuiToolbar-root {
-    color: #B8B9BA;
-
-    path {
-        color: #B8B9BA;
-
+        .btn-grp {
+            width: 100%;
+            height: calc(100% - 300px);
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
-}
 
-.MuiTablePagination-selectLabel,
-.MuiTablePagination-displayedRows {
-    margin-bottom: 1%;
-}
-
-.MuiDataGrid-columnHeader {
-    float: left;
-}
-
-.mutual-fund-charts-container {
-    width: 40%;
-    padding: 2% 4%;
 }

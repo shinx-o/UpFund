@@ -62,8 +62,7 @@ export default function CreateMutualFund() {
                             <Form.Control name='exitLoad' type="number" min={1} max={8} step='0.1' defaultValue={0.1} className='field' placeholder="Exit Load" required />
                         </Form.Group>
                         <div className="btn-group">
-                            <button className="stock-btn" onClick={togglePasswordVisibility}>Add Stocks</button>
-                            <button className="stock-btn" onClick={togglePasswordVisibility}>Edit Stocks</button>
+                            <button className="stock-btn" onClick={togglePasswordVisibility}>Add / Edit Stocks</button>
                             <Link to='/managerDashboard'><button className="stock-btn submit-btn">Create Mutual Fund</button></Link>
                         </div>
                     </Form>
@@ -73,7 +72,7 @@ export default function CreateMutualFund() {
                     <h6 className='stock-header'>Stocks Added :</h6>
                     <div className="line"></div>
                     <div className="stock-list-container">
-                        <Table striped="columns" variant='dark' className='stock-table'>
+                        <Table variant='dark' className='stock-table'>
                             <thead>
                                 <tr>
                                     <th>Stock Name</th>
@@ -81,6 +80,50 @@ export default function CreateMutualFund() {
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
                                 <tr>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -98,7 +141,7 @@ export default function CreateMutualFund() {
                             <span>Enter Stock Weightages</span>
                         </div>
                         <div className="stock-data-top">
-                            {stocks.map((stock,idx) => {
+                            {stocks.map((stock, idx) => {
                                 return (
                                     <div className="check-field" key={idx}>
                                         <Form.Group className="mb-3 form-fields">
@@ -110,7 +153,8 @@ export default function CreateMutualFund() {
                             })}
                         </div>
                         <div className="stock-data-bottom">
-                            <button className="add-stocks">Add Stocks</button>
+                            <button className="add-stocks" onClick={(e) => setPasswordVisible(false)}>Confirm</button>
+                            <span className="corpus-value">Balance Left: ₹100,000,000</span>
                         </div>
                     </div>
                 </div>
