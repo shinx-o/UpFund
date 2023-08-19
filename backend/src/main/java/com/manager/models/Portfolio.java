@@ -30,6 +30,17 @@ public class Portfolio {
 	
 	@Column
 	private double weightage;
+	
+	@Column
+	private double stockUnits;
+	
+	public double getStockUnits() {
+		return stockUnits;
+	}
+
+	public void setStockUnits(double stockUnits) {
+		this.stockUnits = stockUnits;
+	}
 
 	public int getPortfolioId() {
 		return portfolioId;
@@ -67,11 +78,12 @@ public class Portfolio {
 		super();
 	}
 
-	public Portfolio(int portfolioId, int mutualFundId, int stockId, double weightage) {
+	public Portfolio(int portfolioId, int mutualFundId, int stockId, double weightage, double stockUnits) {
 		super();
 		this.portfolioId = portfolioId;
 		this.mutualFundId = mutualFundId;
 		this.stockId = stockId;
 		this.weightage = weightage;
+		this.stockUnits = stockUnits;
 	}
 }

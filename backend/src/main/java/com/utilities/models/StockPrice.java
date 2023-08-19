@@ -3,8 +3,10 @@ package com.utilities.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "STOCK_PRICE")
 public class StockPrice {
 
 @Id

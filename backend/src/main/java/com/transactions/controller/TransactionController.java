@@ -1,9 +1,9 @@
 package com.transactions.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,26 +19,26 @@ public class TransactionController {
 	
 	@Autowired
 	TransactionService ts;
-	@RequestMapping(value="/transactions",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public String getAllTransactions()//Arrsy;list
+	
+	@RequestMapping(value="/transactions",method=RequestMethod.GET, produces= "application/json")
+	public List<InvestorTransaction> getAllTransactions()
 	{
 	
 		return ts.getAllTransactions();
 		
 	}
-	@RequestMapping(value="/tranasctions/investor/{id}",method=RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public String getInvestorTransactions()//
+	@RequestMapping(value="/tranasctions/investor/{id}",method=RequestMethod.GET, produces="application/json")
+	public List<InvestorTransaction> getInvestorTransactions(@PathVariable("id") int investorId)
 	{
-	
-		return ts.getInvestorTransactions(0);
+		return ts.getInvestorTransactions(investorId);
 		
 	}
-	@RequestMapping(value="/transaction/buy",method=RequestMethod.POST)
-	public String createBuyTransaction(@RequestBody InvestorTransaction t)
+	@RequestMapping(value="/transaction/buy",method=RequestMethod.POST, produces="application/json")
+	public InvestorTransaction createBuyTransaction(@RequestBody InvestorTransaction t)
 	{
 		return ts.createBuyTransaction(t);
 	}
-	@RequestMapping(value="/transaction/sell",method=RequestMethod.POST)
+	@RequestMapping(value="/transaction/sell",method=RequestMethod.POST, produces="application/json")
 	public String createSellTransaction(@RequestBody InvestorTransaction t)
 	{
 		return ts.createSellTransaction(t);

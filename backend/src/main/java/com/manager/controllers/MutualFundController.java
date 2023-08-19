@@ -1,11 +1,9 @@
 package com.manager.controllers;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.manager.models.MutualFund;
-import com.manager.models.Portfolio;
 import com.manager.services.MutualFundService;
 
 @RestController
@@ -41,8 +38,7 @@ public class MutualFundController<T> {
 		}
 	}
 
-	@RequestMapping(value = "/mutualfunds", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/mutualfunds", method = RequestMethod.GET)
 	public String getAllMutualFund() {
 
 		return ms.getAllMutualFund();
@@ -51,7 +47,7 @@ public class MutualFundController<T> {
 
 	@RequestMapping(value = "/mutualfunds/{id}", method = RequestMethod.GET)
 	public String getMutualFundById(@PathVariable("id") int mId) {
-
+		
 		return ms.getMutualFundById(mId);
 	}
 

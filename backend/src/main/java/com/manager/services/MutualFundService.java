@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.manager.models.MutualFund;
 import com.manager.models.Portfolio;
 import com.repository.MutualFundRepository;
+import com.repository.NavHistoryRepository;
 import com.repository.PortfolioRepository;
 import com.repository.StockPriceRepository;
+import com.utilities.models.NavHistory;
 import com.utilities.services.UtilityFunctions;
 
 @Service
@@ -25,8 +27,10 @@ public class MutualFundService {
 	
 	@Autowired
 	StockPriceRepository spr;
+	
 
 	public <T> String createMutualFund(MutualFund mutualFund, List<Map<String, T>> stocks) {
+		double initialCorpus = 1000000000; 
 		List<Double> stockPrices = new ArrayList<>();
 		List<Double> weightagesList = new ArrayList<Double>();
 		
@@ -35,7 +39,7 @@ public class MutualFundService {
 			for (Map<String, T> map : stocks) {
 				int stockId = (int) map.get("stockId");
 				double weight = (double) map.get("weightage");
-				double openingPrice = spr.findOpeningPriceByStockIdAndBusinessDate(stockId);
+				double openingPrice = mfr.findOpeningPriceByStockIdAndBusinessDate(stockId);
 				stockPrices.add(openingPrice);
 				weightagesList.add(weight);
 			}
@@ -43,16 +47,19 @@ public class MutualFundService {
 			UtilityFunctions.calculateTotalInvestmentandUnits(mutualFund, weightagesList, mutualFund.getCashBalance(), stockPrices);
 			UtilityFunctions.calculateNav(mutualFund);
 			
-			mfr.save(mutualFund);
-			MutualFund mf = mfr.findByMutualFundName(mutualFund.getMutualFundName());
+			mutualFund = mfr.save(mutualFund);
+			
 			for (Map<String, T> map : stocks) {
+				int index = 0;
 				int stockId = (int) map.get("stockId");
 				double weight = (double) map.get("weightage");
 				Portfolio port = new Portfolio();
-				port.setMutualFundId(mf.getMutualFundId());
+				port.setMutualFundId(mutualFund.getMutualFundId());
 				port.setStockId(stockId);
 				port.setWeightage(weight);
+				port.setStockUnits((initialCorpus * weight)/stockPrices.get(index));
 				pr.save(port);
+				index += 1;
 
 			}
 
