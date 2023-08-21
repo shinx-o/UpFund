@@ -25,7 +25,7 @@ ChartJS.register(
 
 const DoughnutChart = ({data}) => {
 
-    const labels = data.map(item => item.fundName);
+    const labels = data.map(item => item.mutualFundName);
     const values = data.map(item => item.units);
 
     const chartData = {

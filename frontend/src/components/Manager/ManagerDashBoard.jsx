@@ -54,7 +54,7 @@ export default function ManagerDashBoard() {
                 </div>
             </div>
             <div className="middle">
-                <BarChart data={mutualFundsList && mutualFundsList}/>
+                <BarChart data={mutualFundsList && mutualFundsList} />
             </div>
             <div className="bottom">
                 <div className="header">

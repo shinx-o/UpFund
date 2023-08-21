@@ -12,15 +12,42 @@ $input-text-color: #AEB2B6;
     place-items: center;
     background-color: $base-background;
 
+    .alert {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 50px;
+        padding: 10px;
+        font-weight: 500;
+        z-index: 50;
+        text-align: center;
+        background-color: rgb(255, 69, 97);
+        color: rgb(253, 235, 237);
+        border: none;
+        border-radius: 0;
+    }
+
+    form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .visible {
+        display: none;
+    }
+
     .input-container {
         background-color: $base-fade-background;
-        width: 60%;
+        width: 70%;
         height: 450px;
         padding: 20px;
         display: flex;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.053);
 
         .left {
-            width: 50%;
+            width: 30%;
             height: 100%;
             padding: 5px;
             color: white;
@@ -36,18 +63,18 @@ $input-text-color: #AEB2B6;
                 display: flex;
                 flex-direction: column;
                 font-weight: 500;
-                
+
                 label {
                     margin-bottom: 2px;
                 }
-                
+
                 input {
                     background-color: #2f3138;
                     border: 1px solid $input-text-color;
                     border-radius: 5px;
                     padding: 5px 20px;
                     color: white;
-                    font-weight: 500;
+                    // font-weight: 500;
 
 
                     &:focus {
@@ -58,43 +85,127 @@ $input-text-color: #AEB2B6;
 
 
                 button {
-                    border: none;
+                    border: 1px solid #8167A9;
                     background-color: #8167A9;
                     font-weight: 500;
                     color: white;
-                }
 
-            }
-
-
-
-        }
-
-
-        .right {
-            border-left: 1px solid $input-text-color;
-            width: 50%;
-            height: 100%;
-            padding: 5px;
-            color: white;
-            display: flex;
-            justify-content: center;
-
-            .data-table {
-                width: 100%;
-                height: 100%;
-
-                .table-head{
-                    width: 100%;
-                    height: fit-content;
-                    // display: flex;
-                    // align-items: center;
-
-                    .header-field {
-                        margin-left: 10px;
+                    &:hover {
+                        background-color: rgba(163, 132, 209, 0.123);
+                        box-shadow: inset 0px 0px 5px #b042f9a7;
+                        border-color: white;
+                        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.082);
                     }
                 }
             }
+        }
+    }
+}
+
+
+.right {
+    width: 65%;
+    margin-left: 40px;
+    border-left: 1px solid $input-text-color;
+    height: 100%;
+    padding: 5px;
+    color: white;
+    font-weight: 500;
+
+
+    .header-container {
+        width: 100%;
+        height: 50px;
+        padding: 5px;
+        display: flex;
+        justify-content: space-evenly;
+
+        .header {
+            height: 100%;
+        }
+
+        .check {
+            width: 15%;
+            text-align: center;
+        }
+
+        .stock-name-header {
+            width: 35%;
+        }
+
+        .stock-weight-header {
+            text-align: center;
+            transform: translateX(30px);
+            width: 25%;
+        }
+
+
+    }
+
+    .bottom-container {
+        width: 100%;
+        height: 340px;
+        padding: 5px 14px;
+        overflow-y: scroll;
+
+        & {
+            scrollbar-width: auto;
+            scrollbar-color: #8f54a0 #363636;
+        }
+
+        /* Chrome, Edge, and Safari */
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            // background: #363636;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #8f54a0;
+            border-radius: 10px;
+        }
+
+
+        .field-row {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: 1px solid $input-text-color;
+
+            .checkbox {
+                cursor: pointer;
+                width: 15%;
+                height: 20px;
+                transform: translateX(-25px);
+            }
+
+            .stock-name {
+                width: 51%;
+                height: 30px;
+                // text-align: center;
+                margin: 0 10px;
+            }
+
+            .stock-weight {
+                float: right;
+                width: 15%;
+                background-color: #2f3138;
+                border: 1px solid $input-text-color;
+                border-radius: 5px;
+                padding: 5px 20px;
+                color: white;
+
+                &:focus {
+                    border: 1px solid $base-control-color;
+                    outline: none;
+                }
+
+            }
+
         }
     }
 }

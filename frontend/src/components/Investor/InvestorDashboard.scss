@@ -201,13 +201,12 @@ $input-text-color: #AEB2B6;
 
                         .cap {
                             font-size: 17px;
+                            color: $input-text-color;
                         }
 
                         .risk {
-                            background-color: rgba(255, 69, 97, 0.703);
                             padding: 2px 8px;
                             border-radius: 5px;
-                            color: rgb(255, 221, 225);
                             font-size: 10px;
                         }
                     }
@@ -324,4 +323,20 @@ $input-text-color: #AEB2B6;
     width: 100px;
     transform: translate(345px, -10px);
     animation: moveSliderRight 1s linear;
+}
+
+.High {
+    background-color: rgba(255, 69, 97, 0.703);
+    color: rgb(255, 221, 225);
+
+}
+
+.Medium{
+    background-color: #FFE0C6;
+    color: #FF9085;
+}
+
+.Small {
+    background-color: #BBEFCB;
+    color: #52AD96;
 }

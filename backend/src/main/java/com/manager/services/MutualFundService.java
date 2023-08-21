@@ -29,7 +29,7 @@ public class MutualFundService {
 	StockPriceRepository spr;
 	
 
-	public <T> String createMutualFund(MutualFund mutualFund, List<Map<String, T>> stocks) {
+	public <T> MutualFund createMutualFund(MutualFund mutualFund, List<Map<String, T>> stocks) throws Exception {
 		double initialCorpus = 1000000000; 
 		List<Double> stockPrices = new ArrayList<>();
 		List<Double> weightagesList = new ArrayList<Double>();
@@ -37,8 +37,8 @@ public class MutualFundService {
 		try {
 			
 			for (Map<String, T> map : stocks) {
-				int stockId = (int) map.get("stockId");
-				double weight = (double) map.get("weightage");
+				int stockId = (Integer) map.get("stockId");
+				double weight = (Double) map.get("weightage");
 				double openingPrice = mfr.findOpeningPriceByStockIdAndBusinessDate(stockId);
 				stockPrices.add(openingPrice);
 				weightagesList.add(weight);
@@ -51,8 +51,8 @@ public class MutualFundService {
 			
 			for (Map<String, T> map : stocks) {
 				int index = 0;
-				int stockId = (int) map.get("stockId");
-				double weight = (double) map.get("weightage");
+				int stockId = (Integer) map.get("stockId");
+				double weight = (Double) map.get("weightage");
 				Portfolio port = new Portfolio();
 				port.setMutualFundId(mutualFund.getMutualFundId());
 				port.setStockId(stockId);
@@ -63,9 +63,9 @@ public class MutualFundService {
 
 			}
 
-			return "Fund Created";
+			return mutualFund;
 		} catch (Exception e) {
-			return e.getMessage();
+			throw new Exception(e);
 		}
 	}
 

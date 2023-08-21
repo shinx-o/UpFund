@@ -23,7 +23,6 @@ public class TransactionController {
 	@RequestMapping(value="/transactions",method=RequestMethod.GET, produces= "application/json")
 	public List<InvestorTransaction> getAllTransactions()
 	{
-	
 		return ts.getAllTransactions();
 		
 	}

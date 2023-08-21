@@ -21,7 +21,6 @@ public class UtilityController {
 	
 	@RequestMapping(value = "/stocks", produces="application/json", method = RequestMethod.GET)
 	public List<Stock> getStocks(){
-		System.out.println("Called Stocks");
 		return us.getAllStocks();
 	}
 	
