@@ -13,8 +13,72 @@ $input-text-color: #AEB2B6;
     background-color: $base-background;
 
     .input-container {
-        background-color: red;
+        background-color: $base-fade-background;
         width: 60%;
-        height: fit-content;
+        height: 450px;
+        padding: 20px;
+        display: flex;
+
+        .left {
+            width: 50%;
+            height: 100%;
+            padding: 5px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .field-entity {
+                margin-top: 10px;
+                padding: 5px 10px;
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                font-weight: 500;
+                
+                label {
+                    margin-bottom: 2px;
+                }
+                
+                input {
+                    background-color: #2f3138;
+                    border: 1px solid $input-text-color;
+                    border-radius: 5px;
+                    padding: 5px 20px;
+                    color: white;
+                    font-weight: 500;
+
+
+                    &:focus {
+                        border: 1px solid $base-control-color;
+                        outline: none;
+                    }
+                }
+
+
+                button {
+                    border: none;
+                    background-color: #8167A9;
+                    font-weight: 500;
+                    color: white;
+                }
+
+            }
+
+
+
+        }
+
+
+        .right {
+            border-left: 1px solid $input-text-color;
+            width: 50%;
+            height: 100%;
+            padding: 5px;
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
     }
 }
