@@ -110,78 +110,8 @@ export default function CreateMutualFund() {
 
     return (
         <div className='create-container'>
-            <div className="create-fields">
-                <div className="left-container">
-                    <Form data-bs-theme="dark">
-                        <Form.Group className="mb-3" >
-                            <Form.Label htmlFor='mfn' className="field-label">Mutual Fund Name</Form.Label>
-                            <Form.Control name="mfn" id='fundName' type="text" className='field' placeholder="Random Name" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" >
-                            <Form.Label htmlFor='entryLoad' className="field-label">Entry Load</Form.Label>
-                            <Form.Control name='entryLoad' id='entryLoad' type="number" min={1} max={4} step='0.1' defaultValue={0.1} className='field' placeholder="Entry Load" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" >
-                            <Form.Label htmlFor='exitLoad' className="field-label">Exit Load</Form.Label>
-                            <Form.Control name='exitLoad' id='exitLoad' type="number" min={1} max={4} step='0.1' defaultValue={0.1} className='field' placeholder="Exit Load" />
-                        </Form.Group>
-                        <div className="btn-group">
-                            <button className="stock-btn" onClick={togglePasswordVisibility}>Add / Edit Stocks</button>
-                            <button className="stock-btn submit-btn" onClick={handleSubmit} >Create Mutual Fund</button>
-                        </div>
-                    </Form>
-                </div>
-                <div className="line-part"></div>
-                <div className="right-container">
-                    <h6 className='stock-header'>Stocks Added :</h6>
-                    <div className="line"></div>
-                    <div className="stock-list-container">
-                        <Table variant='dark' className='stock-table'>
-                            <thead>
-                                <tr>
-                                    <th>Stock Name</th>
-                                    <th>Stock Weightage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {(addStock && addStock.length>0) && addStock.map(stock => {
-                                    return (
-                                        <tr key={stock.stockId}>
-                                            <td>{stock.stockId}</td>
-                                            <td>{stock.weight}</td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </Table>
-                    </div>
-                </div>
-            </div>
-            <div className={`stock-container ${passwordVisible ? '' : 'visible'}`}>
-                <div className="stock-form">
-                    <div className="stock-data">
-                        <div className="stock-data-top-header">
-                            <span>Stock Names</span>
-                            <span>Enter Stock Weightages</span>
-                        </div>
-                        <div className="stock-data-top">
-                            {stocksList && stocksList.map(stock => {
-                                return (
-                                    <div className="check-field" key={stock.stockId}>
-                                        <Form.Group className="mb-3 form-fields" >
-                                            <Form.Check type='checkbox' onChange={handleCheckBox} id={`check-${stock.stockId}`} className='checkbox data-checkbox' label={stock.stockName} value={stock.stockId} />
-                                            <Form.Control type="number" disabled id={`field-${stock.stockId}`} onChange={handleFields} min={0} max={100} step='0.1' className='checkbox-field' required />
-                                        </Form.Group>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className="stock-data-bottom">
-                            <button className="add-stocks" onClick={handleAddStocks}>Confirm</button>
-                        </div>
-                    </div>
-                </div>
-                <button className="close" onClick={e => setPasswordVisible(false)}><BsXCircleFill /></button>
+            <div className="input-container">
+                
             </div>
         </div>
     )
