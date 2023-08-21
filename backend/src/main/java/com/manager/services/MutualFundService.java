@@ -69,8 +69,8 @@ public class MutualFundService {
 		}
 	}
 
-	public String getAllMutualFund() {
-		return "Dummy";
+	public List<MutualFund> getAllMutualFund() {
+		return mfr.findAll();
 	}
 
 	public String getMutualFundById(int mId) {

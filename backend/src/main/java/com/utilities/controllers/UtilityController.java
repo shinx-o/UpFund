@@ -19,9 +19,9 @@ public class UtilityController {
 	@Autowired
 	UtilityService us;
 	
-	@RequestMapping(value = "stocks", consumes="application/json", produces="application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/stocks", produces="application/json", method = RequestMethod.GET)
 	public List<Stock> getStocks(){
-		
+		System.out.println("Called Stocks");
 		return us.getAllStocks();
 	}
 	

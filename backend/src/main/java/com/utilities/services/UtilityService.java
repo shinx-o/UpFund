@@ -62,7 +62,6 @@ public class UtilityService {
 	
 	public List<Stock> getAllStocks() {
 		List<Stock> response = sr.findAll();
-		
 		return response;
 	}
 }

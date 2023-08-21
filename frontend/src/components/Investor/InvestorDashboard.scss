@@ -1,123 +1,327 @@
 $base-background : #1F2029;
+$base-fade-background : #292b35;
 $base-control-color: #8167A9;
 $neon-pink: #b042f9;
+$input-background: #212529;
 $input-text-color: #AEB2B6;
+
+
+
 
 
 .investor-dashboard-container {
     background-color: $base-background;
     width: 100vw;
-    height: calc(100vh - 60px);
-    margin-top: 60px;
-    padding: 20px;
-    display: flex;
+    height: 100vh;
+    padding: 40px;
+    padding-top: 50px;
 
-    .left {
-        width: 40%;
-        height: 100%;
-        padding: 10px;
 
-        .investment-container {
-            width: 100%;
+
+    .top {
+        width: 100%;
+        height: 140px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px 0;
+
+        .top-entity {
+            width: 30%;
             height: 100%;
-            border-radius: 8px;
-            border: 2px solid $base-control-color;
-            background-color: #212529;
+            // background-color: #212529;
+            // border-radius: 8px;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: grid;
+            place-items: center;
 
 
-            .theader {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                width: 100%;
-                height: 50px;
+            span {
+                font-size: 25px;
+                font-weight: 500;
+            }
+
+
+            .invest-button {
+                padding: 10px 60px;
+                background-color: #3b3b3b18;
+                border: 2px solid #8167A9;
+                border-radius: 10px;
                 color: white;
-                border: 1px solid $base-control-color;
+                font-weight: 500;
+                font-size: 25px;
+                transition: background-color 0.3s ease-in;
 
-                .header {
-                    text-align: center;
-                    width: 100px;
-                    font-weight: 500;
+                &:hover {
+                    background-color: #8167a98c;
+                    border-color: rgba(255, 255, 255, 0.548);
+                    transition: background-color 0.3s ease-out;
+                    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.393);
                 }
             }
+        }
+    }
 
-            .tbody-container {
-                width: 100%;
-                height: 380px;
-                overflow-y: scroll;
+    .total-amount {
+        & span {
+            color: rgb(220, 47, 255);
+        }
+    }
 
-                & {
-                    scrollbar-width: auto;
-                    scrollbar-color: #8167a9 #ffffff00;
-                }
+    .current-value {
+        border-left: 1px solid $input-text-color;
+        border-right: 1px solid $input-text-color;
 
-                /* Chrome, Edge, and Safari */
-                &::-webkit-scrollbar {
-                    display: none;
-                }
+        & span {
+            color: greenyellow;
+        }
+    }
 
-                &::-webkit-scrollbar-track {
-                    display: none;
-                    background: none;
-                }
+    .return {
+        border-right: 1px solid $input-text-color;
 
-                &::-webkit-scrollbar-thumb {
-                    background-color: #8167a9;
-                    border-radius: 16px;
-                    border: 0px solid #ffffff;
-                }
+        & span {
+            color: greenyellow;
+        }
+    }
 
+    .middle {
+        margin-top: 10px;
+        width: 100%;
+        height: 450px;
+        padding: 20px 0;
+        border-top: 1px solid $input-text-color;
+        display: flex;
+
+        .left {
+            width: 50%;
+            height: 100%;
+
+            .donut-chart {
+                width: 350px;
+                transform: translateX(50px);
+                cursor: pointer;
             }
+        }
 
-            .tr {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                width: 100%;
-                height: 50px;
-                color: white;
-                border: 1px solid $base-control-color;
+        .right {
+            width: 50%;
+            height: 100%;
+            padding: 10px;
 
-                button {
-                    cursor: pointer;
-                    background-color: $base-control-color;
-                    padding: 4px;
-                    border: none;
-                    color: white;
-                    border-radius: 20px;
-                }
-
-                .td {
-                    text-align: center;
-                    width: 130px;
-                }
+            .investment-chart {
+                cursor: pointer;
+                width: 120%;
+                height: 200px;
+                padding: 5px;
+                transform: translateX(-150px);
             }
-
-
-
 
         }
     }
 
-    .right {
-        width: 60%;
-        height: 100%;
-        padding: 10px;
+    .bottom {
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        color: white;
 
-        .investment-chart {
+        .header {
             width: 100%;
-            height: 300px;
-            padding: 5px;
-        }
-
-        .btn-grp {
-            width: 100%;
-            height: calc(100% - 300px);
-            padding: 5px;
+            height: fit-content;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
+            margin-bottom: 10px;
+            .header-top{
+                
+                display: flex;
+                h2 {
+                    cursor: pointer;
+                    margin-left: 30px;
+                    width: fit-content;
+                    padding: 0 10px;
+
+                    &:hover {
+                        color: $neon-pink;
+                    }
+                }
+            }
+            
+            .header-bottom {
+                margin-top: 5px;
+                height: 3px;
+                background-color: #b042f9;
+            }
+        }
+
+        .funds-container {
+            border-radius: 6px;
+            width: 100%;
+            height: fit-content;
+            padding: 5px 20px 20px 20px;
+            background-color: $base-fade-background;
+            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.142);
+
+
+            .funds {
+                margin-top: 15px;
+                width: 100%;
+                height: 100px;
+                padding: 10px 0;
+                padding-bottom: 30px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                border-bottom: 1px solid $input-text-color;
+
+                img {
+                    width: 60px;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                }
+
+                .funds-name {
+                    width: 16%;
+                    height: 100%;
+                    font-weight: 500;
+
+                    h4 {
+                        font-size: 20px;
+                        color: white;
+                    }
+
+                    .fund-name-details {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .cap {
+                            font-size: 17px;
+                        }
+
+                        .risk {
+                            background-color: rgba(255, 69, 97, 0.703);
+                            padding: 2px 8px;
+                            border-radius: 5px;
+                            color: rgb(255, 221, 225);
+                            font-size: 10px;
+                        }
+                    }
+                }
+
+                .fund-entity {
+                    height: 100%;
+                    // background-color: #8167A9;
+                    border-left: 1px solid $input-text-color;
+                    // border-right: 1px solid $input-text-color;
+                    width: 18%;
+                    padding: 1px 2px 8px 8px;
+                    display: flex;
+                    flex-direction: column;
+                    font-weight: 500;
+                    align-items: center;
+                    justify-content: space-evenly;
+
+                    h4,
+                    h5 {
+                        color: white;
+                    }
+
+
+                    button {
+                        border: none;
+                        border-radius: 8px;
+                        padding: 6px 30px;
+                        background-color: $neon-pink;
+                        color: white;
+                        font-weight: 500;
+                        transition: background-color 0.3s ease-in;
+
+                        &:hover {
+                            background-color: #b042f918;
+                            // outline: 2px solid $input-text-color;
+                            transition: background-color 0.3s ease-out;
+                            box-shadow: inset 0px 0px 5px #b042f9;
+                            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.393);
+                        }
+
+                    }
+                }
+
+
+            }
         }
     }
 
+
+}
+
+@keyframes animateFundsContainerMoveDown {
+    from{
+        transform: translateY(-1000px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+.footer {
+    width: 100%;
+    height: fit-content;
+    overflow-y: hidden;
+}
+.exit-load {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.move-up {
+    transform: translateY(-1000px);
+    animation: animateFundsContainerMoveDown 0.5s ease-out reverse;
+    display: none;
+}
+
+.move-down {
+    animation: animateFundsContainerMoveDown 0.5s ease-in;
+    transform: translateY(0);
+}
+
+@keyframes moveSliderRight {
+    0%{
+        width: 100px;
+        transform: translate(75px, -10px);
+    }
+    20%{
+        width: 120px;
+    }
+    40%{
+        width: 130px;
+    }
+    60%{
+        width: 120px;
+    }
+    80%{
+        width: 110px;
+    }
+    100%{
+        width: 100px;
+        transform: translate(345px, -10px);
+    }
+    
+}
+
+.move-slider-left {
+    width: 100px;
+    transform: translate(100px, -10px);
+    animation: moveSliderRight 1s linear reverse;
+}
+
+.move-slider-right {
+    width: 100px;
+    transform: translate(345px, -10px);
+    animation: moveSliderRight 1s linear;
 }

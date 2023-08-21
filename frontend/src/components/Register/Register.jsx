@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -32,8 +33,19 @@ export default function Register() {
         const investorEmail = document.getElementById("email").value;
         const investorPassword = document.getElementById("password").value;
         const userData = { investorPassword, investorName, investorEmail, investorPhoneNumber };
-        // dispatch({ type: 'REGISTER', payload: userData });
-        console.log(userData);
+        try {
+            const response = await axios.post('http://localhost:5000/investor/create', userData);
+            console.log(response.data);
+            if (response.data.isAdmin && response.data.authenticated) {
+                navigate("/managerDashboard");
+            } else if (!response.data.isAdmin && response.data.authenticated) {
+                navigate("/investorDashboard");
+            } else {
+                console.log("Invalid Creds")
+            }
+        } catch (error) {
+            console.log(error);
+        }
         navigate('/login');
 
     };

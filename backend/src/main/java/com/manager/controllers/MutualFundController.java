@@ -38,8 +38,8 @@ public class MutualFundController<T> {
 		}
 	}
 
-	@RequestMapping(value = "/mutualfunds", method = RequestMethod.GET)
-	public String getAllMutualFund() {
+	@RequestMapping(value = "/mutualfunds", method = RequestMethod.GET, produces="application/json")
+	public List<MutualFund> getAllMutualFund() {
 
 		return ms.getAllMutualFund();
 

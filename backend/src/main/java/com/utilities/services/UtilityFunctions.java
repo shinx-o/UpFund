@@ -2,6 +2,7 @@ package com.utilities.services;
 
 import java.util.List;
 
+import com.investor.models.InvestorPortfolio;
 import com.manager.models.MutualFund;
 import com.transaction.models.InvestorTransaction;
 
@@ -34,12 +35,13 @@ public class UtilityFunctions {
 		mf.setCurrentNav(nav);
 	}
 
-	public static double calculateCurrentNavAtTimeOfBuy(double oldUnits, List<Double> stockUnits, List<Double> stockPrices) {
+	public static double calculateCurrentNavAtTimeOfBuy(double oldUnits, List<Double> stockUnits,
+			List<Double> stockPrices) {
 		double newValueOfStocks = 0;
 		int index = 0;
 		for (double stockUnit : stockUnits) {
-			 newValueOfStocks += stockUnit * stockPrices.get(index);
-			 index += 1;
+			newValueOfStocks += stockUnit * stockPrices.get(index);
+			index += 1;
 		}
 		double newNav = newValueOfStocks / oldUnits;
 		return newNav;
@@ -63,6 +65,22 @@ public class UtilityFunctions {
 
 		investorTransaction.setUnits(unitsBought);
 
+	}
+
+	public static void perfomSellTransaction(MutualFund mutualFund, InvestorTransaction investorTransaction,
+			InvestorPortfolio investorPortfolio) {
+		double unitsRedeemed = 0;
+		double exitLoad = mutualFund.getExitLoad();
+		double cashBalance = mutualFund.getCashBalance();
+		double nav = mutualFund.getCurrentNav();
+		double mutualFundTotalInvestment = mutualFund.getTotalInvestment();
+		double redemptionAmount = investorTransaction.getTransactionAmount();
+		unitsRedeemed = redemptionAmount / nav;
+		double loadAmount = (exitLoad * redemptionAmount) / 100;
+		redemptionAmount -= loadAmount;
+		mutualFund.setTotalInvestment(mutualFundTotalInvestment - redemptionAmount);
+		investorTransaction.setUnits(investorPortfolio.getUnits() - unitsRedeemed);
+		mutualFund.setCashBalance(cashBalance + loadAmount);
 	}
 
 }

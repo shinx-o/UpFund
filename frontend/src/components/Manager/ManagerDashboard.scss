@@ -1,69 +1,306 @@
 $base-background : #1F2029;
+$base-fade-background : #292b35;
 $base-control-color: #8167A9;
 $neon-pink: #b042f9;
+$input-background: #212529;
+$input-text-color: #AEB2B6;
 
-.dashboard-container {
+
+
+
+
+.manager-dashboard-container {
     background-color: $base-background;
     width: 100vw;
     height: 100vh;
-    padding: 60px 10% 10% 10%;
+    padding: 40px;
+    padding-top: 50px;
 
-    .mutual-fund-container {
-        padding: 2% 4%;
+
+
+    .top {
         width: 100%;
-        height: 100%;
+        height: 140px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px 0;
+
+        .top-entity {
+            width: 30%;
+            height: 100%;
+            // background-color: #212529;
+            // border-radius: 8px;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: grid;
+            place-items: center;
 
 
-        .mutual-fund-btns {
+            span {
+                font-size: 25px;
+                font-weight: 500;
+            }
+
+
+            .invest-button {
+                padding: 10px 60px;
+                background-color: #3b3b3b18;
+                border: 2px solid #8167A9;
+                border-radius: 10px;
+                color: white;
+                font-weight: 500;
+                font-size: 25px;
+                transition: background-color 0.3s ease-in;
+
+                &:hover {
+                    background-color: #8167a98c;
+                    border-color: rgba(255, 255, 255, 0.548);
+                    transition: background-color 0.3s ease-out;
+                    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.393);
+                }
+            }
+        }
+    }
+
+    .total-amount {
+        & span {
+            color: rgb(220, 47, 255);
+        }
+    }
+
+    .current-value {
+        border-left: 1px solid $input-text-color;
+        border-right: 1px solid $input-text-color;
+
+        & span {
+            color: greenyellow;
+        }
+    }
+
+    .return {
+        border-right: 1px solid $input-text-color;
+
+        & span {
+            color: greenyellow;
+        }
+    }
+
+    .middle {
+        margin-top: 10px;
+        width: 100%;
+        height: 350px;
+        padding: 20px 0;
+        border-top: 1px solid $input-text-color;
+        display: flex;
+        justify-content: center;
+
+        .bar-chart{
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+    
+    }
+
+    .bottom {
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        color: white;
+
+        .header {
             width: 100%;
-            height: 50px;
-            padding: 1% 0%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 10px;
+
+            h2 {
+                margin-left: 20px;
+                width: fit-content;
+                padding: 0 10px;
+            }
+
+        }
+
+        .funds-container {
+            border-radius: 6px;
+            width: 100%;
+            height: fit-content;
+            padding: 5px 20px 20px 20px;
+            background-color: $base-fade-background;
+            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.142);
+
+
+            .funds {
+                margin-top: 15px;
+                width: 100%;
+                height: 100px;
+                padding: 10px 0;
+                padding-bottom: 30px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                border-bottom: 1px solid $input-text-color;
+
+                img {
+                    width: 40px;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                }
+
+                .funds-name {
+                    display: grid;
+                    place-items: center;
+                    width: 13%;
+                    height: 100%;
+                    font-weight: 500;
+
+                    h4 {
+                        font-size: 15px;
+                        color: white;
+                    }
+
+                    .fund-name-details {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .cap {
+                            font-size: 12px;
+                        }
+
+                        .risk {
+                            background-color: rgba(255, 69, 97, 0.703);
+                            padding: 2px 8px;
+                            border-radius: 5px;
+                            color: rgb(255, 221, 225);
+                            font-size: 10px;
+                        }
+                    }
+                }
+
+                .fund-entity {
+                    height: 100%;
+                    // background-color: #8167A9;
+                    border-left: 1px solid $input-text-color;
+                    // border-right: 1px solid $input-text-color;
+                    width: 13%;
+                    padding: 1px 2px 8px 8px;
+                    display: flex;
+                    flex-direction: column;
+                    font-weight: 500;
+                    align-items: center;
+                    justify-content: space-evenly;
+
+                    h4,
+                    h5 {
+                        color: white;
+                        font-size: 15px;
+                    }
+
+
+                    button {
+                        border: none;
+                        border-radius: 8px;
+                        padding: 6px 30px;
+                        background-color: $neon-pink;
+                        color: white;
+                        font-weight: 500;
+                        transition: background-color 0.3s ease-in;
+
+                        &:hover {
+                            background-color: #b042f918;
+                            // outline: 2px solid $input-text-color;
+                            transition: background-color 0.3s ease-out;
+                            box-shadow: inset 0px 0px 5px #b042f9;
+                            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.393);
+                        }
+
+                    }
+                }
+
+
+            }
         }
     }
 
 
-
-
-
 }
 
-.MuiDataGrid-columnHeaders {
-    background-color: #292b35;
-    // background-color: #8167A9;
-}
+@keyframes animateFundsContainerMoveDown {
+    from {
+        transform: translateY(-1000px);
+    }
 
-.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
-    font-weight: 600;
-    color: white;
-    text-align: center;
-}
-
-.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
-    font-weight: 600;
-    color: white;
-    text-align: center;
-}
-
-.MuiSvgIcon-root,
-.MuiToolbar-root {
-    color: #B8B9BA;
-
-    path {
-        color: #B8B9BA;
-
+    to {
+        transform: translateY(0);
     }
 }
 
-.MuiTablePagination-selectLabel,
-.MuiTablePagination-displayedRows {
-    margin-bottom: 1%;
+.footer {
+    width: 100%;
+    height: fit-content;
+    overflow-y: hidden;
 }
 
-.MuiDataGrid-columnHeader {
-    float: left;
+.exit-load {
+    margin-top: 5px;
+    font-size: 12px;
 }
 
-.mutual-fund-charts-container {
-    width: 40%;
-    padding: 2% 4%;
+.move-up {
+    transform: translateY(-1000px);
+    animation: animateFundsContainerMoveDown 0.8s ease-out reverse;
+    display: none;
+}
+
+.move-down {
+    animation: animateFundsContainerMoveDown 0.8s ease-in;
+    transform: translateY(0);
+}
+
+@keyframes moveSliderRight {
+    0% {
+        width: 100px;
+        transform: translate(75px, -10px);
+    }
+
+    20% {
+        width: 120px;
+    }
+
+    40% {
+        width: 130px;
+    }
+
+    60% {
+        width: 120px;
+    }
+
+    80% {
+        width: 110px;
+    }
+
+    100% {
+        width: 100px;
+        transform: translate(345px, -10px);
+    }
+
+}
+
+.move-slider-left {
+    width: 100px;
+    transform: translate(100px, -10px);
+    animation: moveSliderRight 1s ease-in-out reverse;
+}
+
+.move-slider-right {
+    width: 100px;
+    transform: translate(345px, -10px);
+    animation: moveSliderRight 0.8s ease-in-out;
 }

@@ -24,7 +24,7 @@ export default function Login() {
         const password = document.getElementById("password").value;
 
         try {
-            const response = await axios.post('http://localhost:4000/login', { username, password });
+            const response = await axios.post('http://localhost:5000/login', { username, password });
             console.log(response.data);
             if(response.data.isAdmin && response.data.authenticated) {
                 navigate("/managerDashboard");
