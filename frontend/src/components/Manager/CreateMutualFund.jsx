@@ -51,13 +51,18 @@ export default function CreateMutualFund() {
                     </div>
                 </div>
                 <div className="right">
-                    <table className="data-table">
-                        <thead className="table-header">
-                            <tr></tr>
-                            <tr>Stock Name</tr>
-                            <tr>Weightage</tr>
-                        </thead>
-                    </table>
+                    <div className="data-table">
+                        <div className="table-head">
+                            <span className="header field"></span>
+                            <span className="header field">Stock Names</span>
+                            <span className="header field">Stock Weightage</span>
+                        </div>
+                        <div className="table-body">
+                            <input type="checkbox" className="checkbox" />
+                            <span className="stock-name">Random</span>
+                            <input type="text" className="field-entry" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
