@@ -3,6 +3,8 @@ package com.investor.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.investor.models.InvestorPortfolio;
 import com.investor.services.InvestorPortfolioService;
+import com.utilities.services.ExceptionHandler;
 
 @RestController
 public class InvestorPortfolioController {
@@ -19,19 +22,27 @@ public class InvestorPortfolioController {
 	InvestorPortfolioService ips;
 
 	@RequestMapping(value = "/investorportfolio", method = RequestMethod.GET, produces = "application/json")
-	public List<InvestorPortfolio> getAllInvestments() {
-		return ips.getAllInvestments();
+	public ResponseEntity<?> getAllInvestments() {
+		try {
+			List<InvestorPortfolio> folios =  ips.getAllInvestments();
+			return new ResponseEntity<>(folios , HttpStatus.OK);
+			
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage() ,ExceptionHandler.resolveHttpStatus(e));
+
+		}
 	}
 
-	@RequestMapping(value = "/investorportfolio/id/{id}", method = RequestMethod.GET, produces = "application/json")
-	public List<InvestorPortfolio> getInvestmentsById(@PathVariable("id") int PortfolioId) {
-		return ips.getInvestmentsById(PortfolioId);
-	}
+	@RequestMapping(value = "/investorportfolio/{id}", method = RequestMethod.GET, produces = "application/json")
+	public  ResponseEntity<?> getInvestmentsById(@PathVariable("id") int investorPortfolioId) {
+		try {
+			List<InvestorPortfolio> folios =  ips.getInvestmentsById(investorPortfolioId);
+			return new ResponseEntity<>(folios , HttpStatus.OK);
+			
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage() ,ExceptionHandler.resolveHttpStatus(e));
 
-	@RequestMapping(value = "/investorportfolio/id/{id}", method = RequestMethod.PATCH, produces = "application/json")
-	public String updateInvestorPortfolioById(@PathVariable("id") int PortfolioId, @RequestBody InvestorPortfolio ipf) {
-		System.out.println("Investor protfolio updated sucessfully");
-		return ips.updateInvestorPortfolioById(PortfolioId, ipf);
+		}
 	}
 
 }

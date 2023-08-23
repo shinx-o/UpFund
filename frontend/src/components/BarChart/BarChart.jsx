@@ -26,7 +26,7 @@ const BarChart = ({ data }) => {
 
         datasets: [
             {
-                label: 'Net Asset Value History',
+                label: 'Net Asset Value For All The Funds',
                 data: data.map(item => item.currentNav),
                 backgroundColor: '#9AD0F5', // Bar color
                 borderColor: '#36A2EB', // Border color

@@ -6,6 +6,7 @@ import ManagerDashBoard from './components/Manager/ManagerDashBoard';
 import NavBar from './components/NavBar/NavBar';
 import InvestorDashboard from './components/Investor/InvestorDashboard';
 import Buy from './components/Investor/Buy/Buy';
+import MutualFund from './components/Manager/MutualFund';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='*' element={<Home />} />
         <Route path='/managerDashboard' element={<ManagerDashBoard />} />
+        <Route path='/managerDashboard/mutualfund/:mutualFundId' element={<MutualFund />} />
         <Route path='/createMutualFund' element={<CreateMutualFund />} />
         <Route path='/investorDashboard' element={<InvestorDashboard />} />
         <Route path='/invest' element={<Buy />} />

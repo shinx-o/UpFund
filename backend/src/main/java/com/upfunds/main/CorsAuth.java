@@ -1,19 +1,24 @@
 package com.upfunds.main;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-@EnableWebMvc
-public class CorsAuth extends WebMvcConfigurerAdapter {
+public class CorsAuth {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Apply CORS to all endpoints
-//            .allowedOrigins("http://localhost:3000") // Replace with your frontend's URL
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow appropriate methods
-            .allowedHeaders("*") // Allow all headers
-            .allowCredentials(true); // Allow credentials (cookies, etc.)
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*"); // Allow all origins. Adjust as needed.
+        config.addAllowedHeader("*"); // Allow all headers. You can specify specific headers here.
+        config.addAllowedMethod("*"); // Allow all HTTP methods. You can specify specific methods here.
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
+    
+    
 }

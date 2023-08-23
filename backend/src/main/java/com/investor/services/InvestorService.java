@@ -13,106 +13,88 @@ import com.repository.InvestorRepository;
 
 @Service
 public class InvestorService {
-	
+
 	@Autowired
 	InvestorRepository investorRepository;
-	
+
 	public String createInvestor(Investor investor) {
-		System.out.println("Calling Service");
 		try {
 			investorRepository.save(investor);
 			return "User created successfully";
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return e.getMessage();
 		}
-    }
-	
-	public String updateInvestorByIdCompletely(int investorId, Investor i) {
-	    Investor existingInvestor = investorRepository.findOne(investorId);
-	    if (existingInvestor == null) {
-	        return "Investor not found";
-	    }
-	    existingInvestor.setInvestorPassword(i.getInvestorPassword());
-	    existingInvestor.setInvestorName(i.getInvestorName());
-	    existingInvestor.setInvestorEmail(i.getInvestorEmail());
-	    existingInvestor.setInvestorPhoneNumber(i.getInvestorPhoneNumber());
-	    
-	    // ...
-
-	    investorRepository.save(existingInvestor); // Use save to update the entity
-
-	    return "Investor updated successfully";
 	}
 
-	public String updateInvestorById(int investorId,  Investor i) {
-	    Investor existingInvestor = investorRepository.findOne(investorId);
-	    if (existingInvestor == null) {
-	        return "Investor not found";
-	    }
+	public String updateInvestorById(int investorId, Investor i) throws Exception {
+		try {
 
-	    // Update only the non-null attributes of the existingInvestor using the data from i
-	    if (i.getInvestorPassword() != null) {
-	        existingInvestor.setInvestorPassword(i.getInvestorPassword());
-	    }
-	    if (i.getInvestorName() != null) {
-	        existingInvestor.setInvestorName(i.getInvestorName());
-	    }
-	    if(i.getInvestorEmail()!=null)
-	    {
-	    	existingInvestor.setInvestorEmail(i.getInvestorEmail());
-	    }
-	    if(i.getInvestorPhoneNumber()!=0)
-	    {
-	    	existingInvestor.setInvestorPhoneNumber(i.getInvestorPhoneNumber());
-	    }
-	    // ...
+			Investor existingInvestor = investorRepository.findOne(investorId);
 
-	    investorRepository.save(existingInvestor); // Use save to update the entity
+			if (existingInvestor == null) {
+				throw new Exception("No Investor Found With Investor ID: " + investorId);
+			}
 
-	    return "Investor updated successfully";
+			String res = "Investor's ";
+			if (i.getInvestorPassword() != null) {
+				existingInvestor.setInvestorPassword(i.getInvestorPassword());
+				res += "Password, ";
+			}
+
+			if (i.getInvestorName() != null) {
+				existingInvestor.setInvestorName(i.getInvestorName());
+				res += "Name, ";
+			}
+
+			if (i.getInvestorEmail() != null) {
+				existingInvestor.setInvestorEmail(i.getInvestorEmail());
+				res += "Email, ";
+			}
+
+			if (i.getInvestorPhoneNumber() != 0) {
+				existingInvestor.setInvestorPhoneNumber(i.getInvestorPhoneNumber());
+				res += "Phone Number, ";
+			}
+
+			res += "Updated Successfully.";
+			investorRepository.save(existingInvestor); // Use save to update the entity
+
+			return res;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
-	
-	public String deleteInvestorById( int investorId) {
-		
-	    investorRepository.delete(investorId);
-	    return "Investor deleted successfully";
-	    
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Map<String,String> getInvestorById(int investorId)
-	{
-		Map<String,String> response=new HashMap<String, String>();
-	    Investor existingInvestor = investorRepository.findOne(investorId);
-	    
-	    String id = "" + existingInvestor.getInvestorId();
-	    String name = "" + existingInvestor.getInvestorName();
-	    response.put("id", id);
-	    response.put("name", name);
-//	    response.put("email", (T) existingInvestor.getInvestorEmail());
-//	    response.put("phoneNumber", (T) existingInvestor.getInvestorPhoneNumber());
 
-	    return response;   
-	}
-	
-//	public String updateInvestorById(int investorId,Investor i)
-//	{
-//		for(Investor it:investorRepository.findAll())
-//		{
-//			if(it.getInvestorId()==investorId)
-//			{
-//				it.setInvestorName(i.getInvestorName());
-//				it.setInvestorEmail(i.getInvestorEmail());
-//				it.setInvestorPhoneNumber(i.getInvestorPhoneNumber());
-//				it.setInvestorPassword(i.getInvestorPassword());
-//				
-//				return "Updated investor with Invenstor_id"+investorId+"successfully";
-//				
-//			}
-//		}
-//		return "Not Updated Since no investor with this "+investorId+"found";
-//		
-//	}
+	public String deleteInvestorById(int investorId) throws Exception {
+		try {
+			investorRepository.delete(investorId);
+			return "Investor deleted successfully";
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 
-  
+	}
+
+	public Map<String, Object> getInvestorById(int investorId) throws Exception {
+		try {
+
+			Map<String, Object> response = new HashMap<String, Object>();
+			Investor existingInvestor = investorRepository.findOne(investorId);
+
+			if (existingInvestor == null) {
+				throw new Exception("No Investor Found With Investor ID: " + investorId);
+			}
+
+			int id = existingInvestor.getInvestorId();
+			String name = existingInvestor.getInvestorName();
+			response.put("id", id);
+			response.put("name", name);
+
+			return response;
+
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
 }

@@ -15,45 +15,55 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.manager.models.MutualFund;
 import com.manager.services.MutualFundService;
+import com.utilities.services.ExceptionHandler;
+import com.utilities.services.MutualFundJsonRequest;
+import com.utilities.services.StocksJsonRequest;
 
 @RestController
-public class MutualFundController<T> {
+public class MutualFundController {
 
 	@Autowired
 	MutualFundService ms;
 
-	@RequestMapping(value = "/mutualfunds/create", method = RequestMethod.POST)
-	public ResponseEntity<?> createMutualFund(@RequestBody Map<String, T> req) {
+	@RequestMapping(value = "/mutualfunds/create", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<?> createMutualFund(@RequestBody MutualFundJsonRequest req) {
 		try {
 
 			MutualFund mf = new MutualFund();
-			mf.setMutualFundName((String) req.get("mutualFundName"));
+			mf.setMutualFundName(req.getMutualFundName());
 			mf.setCashBalance(1000000000.00);
-			mf.setEntryLoad((Double) req.get("entryLoad"));
-			mf.setExitLoad((Double) req.get("exitLoad"));
-			mf.setExpenseRatio((Double) req.get("expenseRatio"));
-			@SuppressWarnings("unchecked")
-			List<Map<String, Double>> stocks = (List<Map<String, Double>>) req.get("stocks");
+			mf.setEntryLoad(req.getEntryLoad());
+			mf.setExitLoad(req.getExitLoad());
+			mf.setExpenseRatio(req.getExpenseRatio());
+			List<StocksJsonRequest> stocks = req.getStocks();
 			mf = ms.createMutualFund(mf, stocks);
 
 			return new ResponseEntity<>(mf, HttpStatus.OK);
-
+			
 		} catch (Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(e.getMessage() ,ExceptionHandler.resolveHttpStatus(e));
 		}
 	}
 
 	@RequestMapping(value = "/mutualfunds", method = RequestMethod.GET, produces = "application/json")
-	public List<MutualFund> getAllMutualFund() {
-
-		return ms.getAllMutualFund();
+	public ResponseEntity<?> getAllMutualFund() {
+		try {
+			List<MutualFund> res = ms.getAllMutualFund();
+			return new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), ExceptionHandler.resolveHttpStatus(e));
+		}
 
 	}
 
-	@RequestMapping(value = "/mutualfunds/{id}", method = RequestMethod.GET)
-	public String getMutualFundById(@PathVariable("id") int mId) {
-
-		return ms.getMutualFundById(mId);
+	@RequestMapping(value = "/mutualfunds/{id}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<?> getMutualFundById(@PathVariable("id") int mutualFundId) {
+		try {
+			Map<String, Object> res = ms.getMutualFundById(mutualFundId);
+			return new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), ExceptionHandler.resolveHttpStatus(e));
+		}
 	}
 
 }

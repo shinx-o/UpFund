@@ -8,6 +8,7 @@ import axios from 'axios';
 
 
 
+
 export default function Register() {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function Register() {
     const handleRegister = async () => {
         // Simulate registration logic
         const investorName = document.getElementById("name").value;
-        const investorPhoneNumber = document.getElementById("phoneNumber").value;
+        const investorPhoneNumber = parseInt(document.getElementById("phoneNumber").value);
         const investorEmail = document.getElementById("email").value;
         const investorPassword = document.getElementById("password").value;
         const userData = { investorPassword, investorName, investorEmail, investorPhoneNumber };

@@ -29,6 +29,7 @@ export const getAllStocks = async () => {
 }
 export const createMutualFund = async (data) => {
     try {
+        console.log(data)
         const response = await axios({
             method: "POST",
             url: "http://localhost:5000/mutualfunds/create",

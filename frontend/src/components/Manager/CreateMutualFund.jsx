@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./CreateMutualFund.scss";
 import { createMutualFund, getAllStocks } from "../DataFetch/fetchManagerData";
-// import { useNavigate } from 'react-router-dom';
 
 export default function CreateMutualFund() {
   const [stockList, setStockList] = useState([]);
+  const [makePost, setMakePost] = useState(null);
   const [mutualFundData, setMutualFundData] = useState({
     mutualFundName: "",
     entryLoad: 0,
@@ -37,10 +37,14 @@ export default function CreateMutualFund() {
   };
 
   const handleCheckboxChange = (stockId, event) => {
+    const weight = document.getElementById(`stock-weight-${stockId}`);
     let newStock = [];
     if (event.target.checked) {
+      weight.disabled = false;
       newStock = [...mutualFundData.stocks, { stockId: stockId, weightage: 0 }];
     } else {
+      weight.disabled = true;
+      weight.value = "";
       newStock = mutualFundData.stocks.filter(
         (item) => item.stockId !== stockId
       );
@@ -49,9 +53,9 @@ export default function CreateMutualFund() {
       ...prev,
       stocks: newStock,
     }));
-};
+  };
 
-const handleWeightChange = (stockId, weight) => {
+  const handleWeightChange = (stockId, weight) => {
     const updatedStocks = mutualFundData.stocks.map((stock) => {
       if (stock.stockId === stockId) {
         return { ...stock, weightage: parseFloat(weight) };
@@ -66,21 +70,30 @@ const handleWeightChange = (stockId, weight) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    for(let obj of Object.keys(mutualFundData)) {
-        console.log(obj);
+
+    if (mutualFundData.stocks.length === 0) {
+      setMakePost({post: false, val: "PLEASE SELECT FEW STOCKS!"});
     }
 
-    // Now you can call your API to create the mutual fund
-    // if (mutualFundData.mutualFundName.length > 0) {
-    //     const res = await createMutualFund(mutualFundData);
-    //     console.log(res);
-    // }
+    let totalWeightage = 0;
+    mutualFundData.stocks.forEach((stock) => {
+      totalWeightage += stock.weightage;
+    });
+
+    if (totalWeightage > 0) {
+      setMakePost({post: false, val: "TOTAL WEIGHTAGE OF STOCKS IS GREATER THAN 100!"});
+    }
+    else if (totalWeightage < 0 && mutualFundData.stocks.length !== 0) {
+      setMakePost({post: true, val: ""});
+    }
+    
+    makePost.post && createMutualFund(mutualFundData);
+  
   };
 
   return (
     <div className="create-container">
-      <div className="alert alert-danger visible" role="alert">
-        A simple danger alert—check it out!
+      <div className={`alert alert-danger `} role="alert">
       </div>
       <div className="input-container">
         <form id="main-form" onSubmit={handleSubmit}>
@@ -102,9 +115,9 @@ const handleWeightChange = (stockId, weight) => {
                 name="entryLoad"
                 id="entryLoad"
                 onChange={handleInputChange}
-                step={0.1}
-                max={4}
-                min={0}
+                step="0.1"
+                min="1"
+                max="4"
                 className="field"
               />
             </div>
@@ -115,9 +128,9 @@ const handleWeightChange = (stockId, weight) => {
                 name="exitLoad"
                 id="exitLoad"
                 onChange={handleInputChange}
-                step={0.1}
-                max={4}
-                min={0}
+                step="0.1"
+                min="1"
+                max="4"
                 className="field"
               />
             </div>
@@ -128,10 +141,10 @@ const handleWeightChange = (stockId, weight) => {
                 name="expenseRatio"
                 id="expenseRatio"
                 onChange={handleInputChange}
-                step={0.1}
-                max={4}
-                min={0}
                 className="field"
+                step="0.1"
+                min="0"
+                max="1"
               />
             </div>
             <div className="submit field-entity">
@@ -166,6 +179,7 @@ const handleWeightChange = (stockId, weight) => {
                         name={`stock-weight-${stock.stockId}`}
                         id={`stock-weight-${stock.stockId}`}
                         className="stock-weight"
+                        disabled
                         onChange={(event) =>
                           handleWeightChange(stock.stockId, event.target.value)
                         }

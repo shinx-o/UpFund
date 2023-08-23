@@ -11,43 +11,34 @@ import com.repository.InvestorPortfolioRepository;
 @Service
 public class InvestorPortfolioService {
 
-	 	@Autowired
-	 	InvestorPortfolioRepository ipRepository;
-	 	
-	 	public List<InvestorPortfolio> getAllInvestments(){
-	 		return ipRepository.findAll();
-	 	}
+	@Autowired
+	InvestorPortfolioRepository ipRepository;
 
-		public List<InvestorPortfolio> getInvestmentsById(int investorPortfolioId) {
-			// TODO Auto-generated method stub
-			return ipRepository.findByInvestorPortfolioId(investorPortfolioId);	
+	public List<InvestorPortfolio> getAllInvestments() throws Exception {
+		try {
+
+			List<InvestorPortfolio> portfolios = ipRepository.findAll();
+			if (portfolios.isEmpty()) {
+				throw new Exception("So Far No Investments Have Made!");
+			}
+
+			return portfolios;
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
-		
-		public String updateInvestorPortfolioById(int PortfolioId,InvestorPortfolio ipf) {
-			 InvestorPortfolio existingProtfolio = ipRepository.findOne(PortfolioId);
-			    if (existingProtfolio == null) {
-			        return "Investor not found";
-			    }
+	}
 
-			    // Update only the non-null attributes of the existingInvestor using the data from i
-			    if (ipf.getMutualFundId()!= 0) {
-			    	existingProtfolio.setMutualFundId(ipf.getMutualFundId());
-			    }
-			    if(ipf.getTotalInvestment()!=0) {
-			    	existingProtfolio.setTotalInvestment(ipf.getTotalInvestment());
-			    }
-			    if(ipf.getUnits()!=0) {
-			    	existingProtfolio.setUnits(ipf.getUnits());
-			    }
-			    
-			    // ...
+	public List<InvestorPortfolio> getInvestmentsById(int investorPortfolioId) throws Exception {
+		try {
+			List<InvestorPortfolio> portfolios = ipRepository.findByInvestorPortfolioId(investorPortfolioId);
+			if (portfolios.isEmpty()) {
+				throw new Exception("No Investments Are Made By The Investor With ID: " + investorPortfolioId);
+			}
 
-			    ipRepository.save(existingProtfolio); // Use save to update the entity
-
-			    return "Investor updated successfully";
-    
+			return portfolios;
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
+	}
 
-	 	
-	 	
 }

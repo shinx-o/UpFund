@@ -38,8 +38,9 @@ public class UtilityService {
 			res.put("authenticated", true);
 			return res;
 		}
+		
 		ArrayList<Investor> list = (ArrayList<Investor>) ir.findAll();
-		System.out.println(list);
+		
 		for (Investor investor : list) {
 			if(investor.getInvestorEmail().equals(email) && investor.getInvestorPassword().equals(password)) {
 				res.put("isAdmin", false);

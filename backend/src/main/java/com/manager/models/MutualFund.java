@@ -32,17 +32,6 @@ public class MutualFund {
 	@Column
 	private double expenseRatio;
 	
-	@Column
-	private double prevNav;
-	
-	public double getPrevNav() {
-		return prevNav;
-	}
-
-	public void setPrevNav(double prevNav) {
-		this.prevNav = prevNav;
-	}
-
 	@Column(name = "LATEST_NAV")
 	private double currentNav;
 	
@@ -53,7 +42,7 @@ public class MutualFund {
 	private double totalUnitsOutstanding;
 
 	public MutualFund(int mutualFundId, String mutualFundName, double cashBalance, double entryLoad, double exitLoad,
-			double expenseRatio,double prevNav, double currentNav, double totalInvestment, double totalUnitsOutstanding) {
+			double expenseRatio, double currentNav, double totalInvestment, double totalUnitsOutstanding) {
 		super();
 		this.mutualFundId = mutualFundId;
 		this.mutualFundName = mutualFundName;
@@ -61,7 +50,6 @@ public class MutualFund {
 		this.entryLoad = entryLoad;
 		this.exitLoad = exitLoad;
 		this.expenseRatio = expenseRatio;
-		this.prevNav = prevNav;
 		this.currentNav = currentNav;
 		this.totalInvestment = totalInvestment;
 		this.totalUnitsOutstanding = totalUnitsOutstanding;

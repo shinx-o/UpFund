@@ -1,0 +1,103 @@
+$base-background: #1f2029;
+$base-fade-background: #292b35;
+$base-control-color: #8167a9;
+$neon-pink: #b042f9;
+$input-background: #212529;
+$input-text-color: #aeb2b6;
+
+.mutual-fund-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: $base-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .main-container {
+    width: 60%;
+    height: 440px;
+    background-color: $base-fade-background;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    .left-main {
+      padding: 5px;
+      height: 100%;
+      width: 50%;
+      border: 1px solid $input-text-color;
+      border-radius: 10px 0px 0px 10px;
+
+      .header-main {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        border-bottom: 1px solid $input-text-color;
+        h2 {
+          font-weight: 600;
+          color: $base-control-color;
+        }
+      }
+
+      .bottom-main {
+        width: 100%;
+        height: calc(100% - 50px);
+        padding: 5px 2px;
+
+        .field {
+          width: 100%;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 500;
+          color: white;
+          padding-right: 15px;
+        }
+      }
+    }
+
+    .right-main {
+      padding: 5px 5px 5px 0;
+      height: 100%;
+      width: 50%;
+      border: 1px solid $input-text-color;
+      padding-left: 10px;
+      border-radius: 0px 10px 10px 0px;
+
+      .header-main {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        border-bottom: 1px solid $input-text-color;
+        h2 {
+          font-weight: 600;
+          color: white;
+        }
+      }
+
+      .bottom-main {
+        width: 100%;
+        height: calc(100% - 50px);
+        padding: 5px 2px;
+        overflow-y: scroll;
+
+        .field-two {
+          width: 100%;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 500;
+          color: white;
+        }
+      }
+    }
+  }
+}
